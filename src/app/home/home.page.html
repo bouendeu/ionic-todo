@@ -1,14 +1,45 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-title>
+            DashBoard
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+<ion-content padding>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>ToDay,s Total:{{todayTotal}}</ion-card-title>
+        </ion-card-header>
+        <ion-item>
+            <ion-icon name="calendar"></ion-icon>
+            <ion-label>Date</ion-label>
+            <ion-button>
+                Change Date
+                <ion-datetime picker-format="DDD,MMM,YYYY" [(ngModel)]="selectedDate" (ionChange)="filterWithDate()"></ion-datetime>
+            </ion-button>
+        </ion-item>
+    </ion-card>
+    <ion-card *ngFor="let expense of expenses">
+
+        <ion-card-header color="dark">
+            <ion-card-subtitle>{{ expense.date | date:'medium'}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-item>
+            <ion-icon slot="start" name="logo-usd"></ion-icon>
+            <ion-label>{{expense.amount}}</ion-label>
+        </ion-item>
+        <ion-card-content>
+            <ion-card-subtitle> Category:{{expense.type}}</ion-card-subtitle>
+            <ion-card-subtitle>Description:{{expense.description}}</ion-card-subtitle>
+        </ion-card-content>
+
+    </ion-card>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="presentAddComponent()">
+            <ion-icon name="logo-usd"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
 </ion-content>

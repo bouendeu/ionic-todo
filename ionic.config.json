@@ -1,5 +1,7 @@
 {
   "name": "expensive",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

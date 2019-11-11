@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>
+            Add Expense
+        </ion-title>
+
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card>
+        <ion-item>
+            <ion-label>
+                Amount $ :
+            </ion-label>
+            <ion-input type="text" pattern="[0-9]*" decimal="true" #amount></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                Description:
+            </ion-label>
+            <ion-input type="text" #description></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                Expense Type:
+            </ion-label>
+
+            <ion-select value="brown" okText="Done" value="Food" #type>
+                <ion-select-option *ngFor="let item of expenseTypes" [value]="item.name">{{item.name}}</ion-select-option>
+            </ion-select>
+
+        </ion-item>
+    </ion-card>
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col>
+                <ion-button expand="block" color="primary" (click)="logExpenseInput(amount,description,type)"> Add</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button expand="block" color="danger" (click)="dismissModal()">
+                    Cancel</ion-button>
+            </ion-col>
+
+        </ion-row>
+    </ion-grid>
+</ion-content>
